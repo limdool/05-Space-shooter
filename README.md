@@ -1,2 +1,2 @@
 # 05-Space-shooter
-First 2D game
+Today, I built my first 2D game. I used a project template given by the instructor and the code that I used for E06a-bullets, which is the last assignment. I downloaded some images from a wbesite called 'kenney.nl.' The images are used as a player and enemies. The game I built is a game about a spaceship attacking aliens. 
