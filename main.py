@@ -15,9 +15,10 @@ SCREEN_TITLE = "2D Shooter"
 NUM_ENEMIES = 5
 STARTING_LOCATION = (200,100)
 BULLET_DAMAGE = 10
-ENEMY_HP = 50 
-HIT_SCORE = 1
-KILL_SCORE = 10
+ENEMY_HP = 100 
+HIT_SCORE = 10
+KILL_SCORE = 1000
+BACKGROUND_Image = "Background-3.png"
 
 class Bullet(arcade.Sprite):
     def __init__(self, position, velocity, damage):
@@ -44,9 +45,9 @@ class Window(arcade.Window):
 
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
-        self.set_mouse_visible(True)   
+        self.set_mouse_visible(True)  
 
-        arcade.set_background_color((0,0,0))
+        arcade.set_background_color((0,0,0)) 
         self.enemy_list = arcade.SpriteList()
         self.bullet_list = arcade.SpriteList()
         self.player_list = arcade.SpriteList()
@@ -55,30 +56,35 @@ class Window(arcade.Window):
         self.player.center_y = 100
         self.player_list.append(self.player)
         self.score = 0
-
+        
         self.enemy = arcade.Sprite("assets/shipBeige_manned.png", 0.5)
         self.enemy.center_x = 650
         self.enemy.center_y = 400
+        self.enemy.hp = ENEMY_HP
         self.enemy_list.append(self.enemy)
 
         self.enemy = arcade.Sprite("assets/shipBlue_manned.png", 0.5)
         self.enemy.center_x = 550
         self.enemy.center_y = 400
+        self.enemy.hp = ENEMY_HP
         self.enemy_list.append(self.enemy)
 
         self.enemy = arcade.Sprite("assets/shipGreen_manned.png", 0.5)
         self.enemy.center_x = 450
         self.enemy.center_y = 400
+        self.enemy.hp = ENEMY_HP
         self.enemy_list.append(self.enemy)
 
         self.enemy = arcade.Sprite("assets/shipPink_manned.png", 0.5)
         self.enemy.center_x = 350
         self.enemy.center_y = 400
+        self.enemy.hp = ENEMY_HP
         self.enemy_list.append(self.enemy)
 
         self.enemy = arcade.Sprite("assets/shipYellow_manned.png", 0.5)
         self.enemy.center_x = 250
         self.enemy.center_y = 400
+        self.enemy.hp = ENEMY_HP
         self.enemy_list.append(self.enemy)
         '''
         self.enemy = arcade.Sprite("assets/shipBiege_manned.png", 0.5)
@@ -88,8 +94,6 @@ class Window(arcade.Window):
         self.enemy = arcade.Sprite("assets/shipYellow_manned.png", 0.5)
         '''
         self.hp = ENEMY_HP  
-
-
 
     def setup(self):
         '''
@@ -103,7 +107,7 @@ class Window(arcade.Window):
         for e in self.enemy_list:
             damage = arcade.check_for_collision_with_list (e, self.bullet_list)
             for d in damage:
-                e.hp = e.hp - b.damage
+                e.hp = e.hp - d.damage
                 d.kill()
                 if e.hp <= 0:
                     e.kill()
