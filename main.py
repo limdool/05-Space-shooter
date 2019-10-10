@@ -17,7 +17,7 @@ STARTING_LOCATION = (200,100)
 BULLET_DAMAGE = 10
 ENEMY_HP = 100 
 HIT_SCORE = 10
-KILL_SCORE = 1000
+KILL_SCORE = 100
 BACKGROUND_Image = "Background-3.png"
 
 class Bullet(arcade.Sprite):
